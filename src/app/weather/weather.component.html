@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2">
+        <div class="ask-weather-data">
+            <h3 class="text-center">Search Weather</h3>
+            <form [formGroup]="weatherSearchForm" (ngSubmit)="onSubmit(weatherSearchForm.value)">
+                <div class="form-group pb-3">
+                    <input type="text" class="form-control" placeholder="Enter city name" formControlName="location">
+                </div>
+                <div class="form-group pb-3">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="weather-details text-center">
+            <h3 class="text-center">Weather Details</h3>
+            <h4>Tempreture in Celcius: {{this.weatherData.main.feels_like | tempretureCelcius}}</h4>
+            <h4>Tempreture in Fahrenheit: {{this.weatherData.main.feels_like | tempretureFahrenheit}}</h4>
+            <h4>Tempreture in Kelvin: {{this.weatherData.main.feels_like}}</h4>
+            <h4>Weather:  <span class="text-capitalize">{{this.weatherData.weather[0].description}}</span></h4>
+            <h4>Sunrise: {{this.weatherData.sys.sunrise | secondsToHMS}} AM</h4>
+            <h4>Sunset: {{this.weatherData.sys.sunset | secondsToHMS}} PM</h4>
+        </div>
+    </div>
+</div>
